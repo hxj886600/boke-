@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+
+  </head>
+  <body>
+     <%include include/head.ejs%>
+    <ul>
+        <% for(var i=0; i<articles.length; i++) {%>
+            <li><a href="/articledetail/<%= articles[i]._id %>"><%= articles[i].title %></a></li>
+        <% } %>
+    </ul>
+ 
+
+    <script src="/javascripts/jquery.min.js"></script>
+ 
+  </body>
+</html>

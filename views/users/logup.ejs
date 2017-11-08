@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>注册</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/stylesheets/users/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/users/logup.css" rel="stylesheet">
+  </head>
+  <body>
+      <%include ../include/head.ejs%>
+    <div class="container">
+
+      <form id="logupForm" class="form-signin" method="post" action="/users/logup">
+        <h2 class="form-signin-heading">请注册</h2>
+        <label for="inputEmail" class="sr-only">用户名</label>
+        <input type="text" id="txtUserName" name="txtUserName" class="form-control" placeholder="用户名" required autofocus>
+        <label for="inputPassword" class="sr-only">密码</label>
+        <input type="password" id="txtUserPwd" name="txtUserPwd" class="form-control" placeholder="密码" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+        <a href="/users/login">登录</a>
+        <a href="/">首页</a>
+
+        <span id="msg" class="err"></span>
+      </form>
+
+    </div> <!-- /container -->
+
+    <script src="/javascripts/jquery.min.js"></script>
+    <script>
+      $("#logupForm").submit(function(){
+
+        $.ajax({
+          url:"/users/logup",
+          type:"post",
+          data:$("#logupForm").serialize(),
+          success:function(data){
+            if(data.status==-1){
+                $("#msg").text(data.msg).show();
+            }else{
+                $("#msg").text(data.msg).hide();
+                location.href="/users/login";
+            }
+          }
+        });
+
+        return false;
+      });
+    
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>文章列表</title>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+  </head>
+  <body>
+      <%include ../include/head.ejs%>
+    <div class="container">
+      <ul>
+          <% for(var i=0; i<articles.length; i++) {%>
+              <li><a href="/article/update/<%= articles[i]._id %>"><%= articles[i].title %></a><input class="deie" name="dele" asd="<%=articles[i]._id%>" type="button" value="x"/></li>
+          <% } %>
+      </ul>
+
+    </div> <!-- /container -->
+
+    <script src="/javascripts/jquery.min.js"></script>
+    <script>
+    
+    var a= $("deie").attr("asd")
+ 
+    $(" input").click(function(){ 
+       var a= $(this).attr("asd")
+      $.ajax({
+        url:"/article/dele",
+        type:"post",
+        data:{dele:a},
+        success:function(data){
+            if(data.status==1){
+
+              alert("删除成功")
+              location.href="/article/"
+             $(this).remove()
+            }else{
+              alert("删除失败")
+          }
+        }
+      })
+      })
+
+
+
+
+    </script>
+  </body>
+</html>

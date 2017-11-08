@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>发布文章</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/stylesheets/users/bootstrap.min.css" rel="stylesheet">
+
+
+    
+  </head>
+
+  <body>
+      <%include ../include/head.ejs%>
+    <div class="container">
+      <form class="form-signin" method="post" action="/article/publish">
+          
+        <div class="form-group">
+            <label for="title">标题</label>
+            <input type="text" class="form-control" id="title" name="title"placeholder="请输入文章标题">
+        </div>
+        <div class="form-group">
+            <label for="author">作者</label>
+            <input type="text" class="form-control" id="author" name="author" placeholder="作者">
+        </div>
+        <div class="form-group">
+            <label for="content">内容</label>
+            <textarea class="form-control" id="content" name="content" rows="10"></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-default">发布</button>
+      </form>
+
+    </div> <!-- /container -->
+
+    <script src="/javascripts/jquery.min.js"></script>
+  </body>
+</html>
